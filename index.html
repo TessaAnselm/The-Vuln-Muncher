@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Control Plane Architect</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -448,6 +453,8 @@
     color: var(--ink-dim);
   }
 </style>
+</head>
+<body>
 
 <div class="app">
   <header class="topbar">
@@ -887,24 +894,27 @@
   }
 
   // ---------- wiring ----------
-  document.querySelectorAll("[data-action]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var action = btn.getAttribute("data-action");
-      if (action === "challenge") {
-        var level = parseInt(btn.getAttribute("data-level"), 10);
-        addUserText("Show me Level " + level);
-        withTyping(function () { presentChallenge(level); });
-      } else if (action === "test-agents") {
-        addUserText("Can I see the test agents?");
-        withTyping(listTestAgents);
-      } else if (action === "upload") {
-        addUserText("I want to upload my agent");
-        withTyping(showUploadPanel);
-      } else if (action === "about") {
-        addUserText("What is this about?");
-        withTyping(function () { teach(""); });
-      }
-    });
+  // Delegated on document (not bound per-button at boot) so buttons rendered
+  // later inside chat cards — the level picker, the "about" card's shortcuts —
+  // work too, not just the ones present when the page first loaded.
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest("[data-action]");
+    if (!btn) return;
+    var action = btn.getAttribute("data-action");
+    if (action === "challenge") {
+      var level = parseInt(btn.getAttribute("data-level"), 10);
+      addUserText("Show me Level " + level);
+      withTyping(function () { presentChallenge(level); });
+    } else if (action === "test-agents") {
+      addUserText("Can I see the test agents?");
+      withTyping(listTestAgents);
+    } else if (action === "upload") {
+      addUserText("I want to upload my agent");
+      withTyping(showUploadPanel);
+    } else if (action === "about") {
+      addUserText("What is this about?");
+      withTyping(function () { teach(""); });
+    }
   });
 
   log.addEventListener("click", function (ev) {
@@ -935,3 +945,5 @@
   );
 })();
 </script>
+</body>
+</html>
