@@ -1,0 +1,8 @@
+# Agent Execution Control Plane - Requirements
+# Minimal dependencies for Guild.ai deployment
+
+# No external dependencies needed for basic agent functionality
+# Guild.ai handles Claude API integration
+
+# Optional: For local testing/development
+python>=3.8
