@@ -1,7 +1,7 @@
-# Agent Execution Control Plane
-## Hackathon Submission - Agent Security Academy
+# Agent Security Academy
+## Interactive Academy for Agent Execution Control Plane Architecture
 
-🤖 An educational agent on Guild.ai that teaches teams how to defend agentic systems against compromise when **agents themselves cannot be trusted as security components**.
+🤖 An educational agent that teaches teams how to defend agentic systems against compromise when **agents themselves cannot be trusted as security components**.
 
 ---
 
@@ -20,7 +20,7 @@
 
 ## 💡 The Solution
 
-**Agent Execution Control Plane** - A teaching agent that shows:
+**Agent Security Academy** - A teaching agent that shows:
 
 1. **Why agents can't enforce security** (TCB theory)
 2. **What external mechanisms MUST protect agentic systems** (control plane design)
@@ -31,12 +31,12 @@
 
 ## 🎮 How It Works
 
-### On Guild.ai, users can:
+Users can:
 
 **1. Upload Their Own Agent**
 ```
 Upload agent definition (JSON)
-Agent Execution Control Plane analyzes it for:
+Control Plane Architect analyzes it for:
 ✓ Over-privilege issues
 ✓ Missing audit logging
 ✓ Prompt injection vulnerabilities
@@ -73,7 +73,7 @@ Learn by attacking, comparing, and understanding.
 
 ```
 ┌─────────────────────────────────────┐
-│  GUILD.AI WORKSPACE                 │
+│  CHAT INTERFACE                     │
 │                                     │
 │  ┌─────────────────────────────┐   │
 │  │ Control Plane Architect     │   │
@@ -97,24 +97,16 @@ Learn by attacking, comparing, and understanding.
 
 ## 🚀 Getting Started
 
-### Deploy to Guild.ai (5 minutes)
-
-1. **Create GitHub repo** (you're reading this from it!)
-2. **Go to guild.ai**
-3. **Click "Import from GitHub"**
-4. **Select this repo**
-5. **Guild deploys automatically**
-6. **Your workspace link:** `guild.ai/workspace/agent-security-academy`
-
-### Share with Users
+### Run Locally
+```bash
+pip install -r requirements.txt
+python agent.py
 ```
-Send this link: guild.ai/workspace/agent-security-academy
-Users can:
-- Chat with the Control Plane Agent
-- Upload their agents for analysis
-- Complete challenges
-- Learn real security concepts
-```
+
+This runs a small set of example interactions through the `AgentSecurityAcademy` router so you can see how challenges, test agents, and the upload/analysis flow respond.
+
+### Use It as a Chat Agent
+`agent.py` exposes `AgentSecurityAcademy.handle_user_message(message)`, which takes a free-text user message and returns a text response. Wire this function up to whatever chat interface or agent platform you're using — it has no platform-specific dependencies.
 
 ---
 
@@ -241,19 +233,6 @@ Controls that work:
 
 ---
 
-## 🎬 Demo Video (90 seconds)
-
-What the hackathon judges see:
-
-1. **Show the problem** (agent with no controls)
-2. **Demonstrate jailbreak** (attack succeeds)
-3. **Explain why it worked** (agents can't enforce security)
-4. **Apply controls** (permission enforcement, sandboxing)
-5. **Show attack fails** (external controls worked)
-6. **Conclusion** (teach about control plane architecture)
-
----
-
 ## 📝 Project Files
 
 ```
@@ -262,86 +241,22 @@ agent-security-academy/
 ├── agent.py (main agent code)
 ├── challenges.md (challenge scenarios)
 ├── requirements.txt (dependencies)
-├── test_agents/
-│   ├── weak_agent_v1.json
-│   ├── over_privileged_agent.json
-│   └── secure_agent.json
+├── test_agents.json (test agent definitions)
 └── images/
-    └── mascot.png (your monster!)
+    └── mascot.png
 ```
-
----
-
-## 🛠️ How to Deploy
-
-### Option 1: Guild.ai (Recommended for Hackathon)
-```bash
-1. Create GitHub repo with this code
-2. Go to guild.ai
-3. Click "Import from GitHub"
-4. Select this repo
-5. Done! Agent is live in minutes
-```
-
-### Option 2: Local Testing
-```bash
-python agent.py
-```
-
----
-
-## 📈 Scoring Strategy
-
-**Why this wins:**
-
-✅ **Implementation & Learning (30 pts)**
-- Teaches important security concepts (TCB, control planes)
-- Interactive learning (challenges, analysis, test agents)
-- Practical and applicable
-
-✅ **Presentation & Video (25 pts)**
-- Clear demo of jailbreak vs. defense
-- Shows understanding of real security principles
-- Compelling narrative
-
-✅ **Code Security (20 pts)**
-- Clean Python code
-- Passes Snyk scan
-- Good practices demonstrated
-
-✅ **Guild.ai Integration (25 pts)**
-- Meaningfully integrated (file upload, multi-agent interaction)
-- Uses Guild features (agent hosting, chat interface, tool access)
-- Users interact entirely through Guild
-
-**Total: ~100 points** (with good execution)
 
 ---
 
 ## 🤝 Contributing
 
-This is a hackathon submission. Feedback welcome!
+Feedback welcome!
 
 ---
 
 ## 📜 License
 
 MIT License - Use freely for educational purposes.
-
----
-
-## 👤 Author
-
-Built with ❤️ for [Your Name] Agent Security Academy Hackathon
-Powered by Claude & Guild.ai
-
----
-
-## 🔗 Links
-
-- **Guild.ai Workspace:** [Your workspace link here]
-- **Demo Video:** [Your demo link here]
-- **GitHub Repo:** [This repo]
 
 ---
 
