@@ -233,6 +233,25 @@ Controls that work:
 
 ---
 
+## 🔍 Security Scoring
+
+This project's own code can be scored using
+[app-security-score](https://github.com/javiergarza-snyk/app-security-score/),
+which clones a public GitHub repo into a sandboxed Docker container and runs
+Snyk SCA (`snyk test`) + SAST (`snyk code test`) to produce a 0-10 score.
+
+```bash
+git clone https://github.com/javiergarza-snyk/app-security-score/
+cd app-security-score
+export SNYK_TOKEN=<your-snyk-personal-access-token>
+node cli.mjs https://github.com/<owner>/agent-security-academy
+```
+
+Requires Docker Desktop, Node.js >= 20, and a free Snyk account/PAT — see the
+tool's README for setup details.
+
+---
+
 ## 📝 Project Files
 
 ```
